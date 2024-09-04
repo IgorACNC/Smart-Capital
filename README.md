@@ -21,9 +21,7 @@
 
 <h2>5.Tecnologias Utilizadas
 
-<h3>-Django (framework python)
-    , Sqlite
-    , API Yahoo Finance.
+<h3>-Django (framework python).
 
 <h2>6.Contribuidores
 
