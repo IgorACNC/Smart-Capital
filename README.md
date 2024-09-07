@@ -19,8 +19,10 @@
 # Entrega 1️⃣
   <details>
     <summary>Imagens</summary>
-     ![image](https://github.com/user-attachments/assets/0a8ee6ce-1dc2-42f2-bb9c-75c906469206)    
-    ![image](https://github.com/user-attachments/assets/e65d9221-d07b-470d-b7fa-0b0fa771b517)
+
+![image](https://github.com/user-attachments/assets/0a8ee6ce-1dc2-42f2-bb9c-75c906469206)    
+    
+![image](https://github.com/user-attachments/assets/e65d9221-d07b-470d-b7fa-0b0fa771b517)
   </details>
   
 
