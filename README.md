@@ -26,7 +26,15 @@
 
 - Link Screencast: https://youtu.be/UuawW5dop-E
   </details>
-  
+
+  # Entrega 2️⃣
+  <details>
+    <summary>Imagens</summary>
+
+
+
+
+  </details>
 
 
 
