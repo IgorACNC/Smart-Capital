@@ -1,1 +1,41 @@
+<!-- usuarios/templates/usuarios/cadastro.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro</title>
+</head>
+<body>
+    <h2>Cadastro</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="username">Nome de usuário:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="password1">Senha:</label>
+        <input type="password" id="password1" name="password1" required><br>
+
+        <label for="password2">Confirme a senha:</label>
+        <input type="password" id="password2" name="password2" required><br>
+
+        <label for="numero_telefone">Número de telefone:</label>
+        <input type="text" id="numero_telefone" name="numero_telefone"><br>
+
+        <label for="Estado">Estado:</label>
+        <input type="text" id="Estado" name="Estado"><br>
+
+        <label for="state">Estado:</label>
+        <select id="state" name="state">
+            {% for code, name in estados %}
+                <option value="{{ code }}">{{ name }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+    <a href="{% url 'login' %}">Já tem conta? Faça login</a>
+</body>
+</html>
 
