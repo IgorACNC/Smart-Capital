@@ -1,1 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <style>
+        /* Estilo Geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        /* Links do Cabeçalho */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            background-color: white;
+            color: #003366;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: black;
+            color: white;
+        }
+
+        /* Conteúdo Principal */
+        main {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        main h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        main p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .cabeçalho{
+            color:  #003366;
+            display: flex;
+            justify-content: space-around;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Smart Capital</h1>
+        <div class="nav-links">
+            <a class= "cabeçalho" href="{% url 'gastos' %}">Controle de Gastos</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main>
+        <h2>Página Inicial</h2>
+        <p>Temos que decidir as funções e o que vai ficar aqui.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Meu Site. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
 
