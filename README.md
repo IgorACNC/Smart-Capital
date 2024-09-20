@@ -30,9 +30,10 @@
   # Entrega 2️⃣
   <details>
     <summary>Imagens</summary>
+    
+![image](https://github.com/user-attachments/assets/9359ea90-9044-4eb7-a578-62ec6940522a)
 
-
-
+![image](https://github.com/user-attachments/assets/1e9d4bdc-4c78-4f41-b7e3-9ded0546ebc5)
 
   </details>
 
