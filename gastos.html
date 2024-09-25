@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
+    <title>Controle de Gastos</title>
     <style>
 
         * {
@@ -14,7 +14,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #ffffff;
         }
 
         header {
@@ -88,29 +88,7 @@
             bottom: 0;
             width: 100%;
         }
-        
-        .text {
-            background-color: #f4f4f9;
-            color: #333;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 20px auto; 
-            text-align: center; 
-        }
-        
-        .text h2 {
-            font-size: 24px;
-            color: #003366;
-        }
-
-        .text p {
-            font-size: 17px;
-            color: #333;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+    
         
         .img {
             text-align: center;
@@ -156,7 +134,7 @@
 <body>
     <div class="sidebar" id="sidebar">
         <a href="{% url 'add_gastos' %}">Adicionar Gastos</a>
-        <a href="{% url 'listar_gastos' %}">Listar Gastos</a>
+        <a href="{% url 'listar_gastos' %}">Vizualizar Gastos</a>
     </div>
     <header>
         <div class="header-container">
@@ -170,21 +148,12 @@
         </div>
     </header>
     <main>
-        <h2>Bem-vindo à Smart Capital</h2>
-        <p>Educação financeira e controle de gastos ao seu alcance.</p>
+        <h2>Controle de Gastos</h2>
+        <p>Controlar os gastos é essencial para garantir um uso consciente do dinheiro<br> e alcançar metas financeiras com mais segurança.</p>
         <div class="img"></div>
             <img src="Logo.jfif" width="300px" alt="Imagem"><br>
         </div>
-        <div class="text">
-            <h2>Sobre nós:</h2>
-                <p>Bem-vindo ao Smart Capital, sua plataforma de educação financeira e controle de gastos. Nosso objetivo é ajudar você a gerenciar suas finanças de maneira simples e eficiente, proporcionando as ferramentas e o conhecimento necessários para tomar decisões financeiras mais inteligentes.</p>
-            <h2>Nossa missão:</h2>
-                <p>Acreditamos que a educação financeira é essencial para alcançar a liberdade e segurança financeira. Nossa missão é capacitar indivíduos a terem controle total de suas finanças, oferecendo uma plataforma intuitiva, com recursos práticos e um conteúdo educativo de qualidade.</p> 
-            <h2>O que Oferecemos:</h2>
-                <p>No Smart Capital, você encontrará:
-                Ferramentas de Controle de Gastos: Registre e acompanhe suas despesas em tempo real.
-                Vídeos e Resumos de Educação Financeira: Conteúdo elaborado para ajudar a entender conceitos importantes, como orçamento, investimentos e planejamento financeiro.</p>   
-        </div>
+
     </main> 
         <footer>
         <p>&copy; 2024 Meu Site. Todos os direitos reservados.</p>
