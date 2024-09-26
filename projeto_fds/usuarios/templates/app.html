@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        header h1 {
+            font-size: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            background-color: white;
+            color: #003366;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: black;
+            color: white;
+        }
+
+        main {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        main h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        main p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    
+        
+        .img {
+            text-align: center;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #003366;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            left: -250px;
+            top: 0;
+            transition: left 0.3s;
+            margin-top: 80px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 20px 0;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            padding: 10px 15px;
+        }
+
+        .sidebar a:hover {
+            background-color: #000102;
+        }
+        
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            display: inline-block;   
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <a href="{% url 'add_gastos' %}">Adicionar Gastos</a>
+        <a href="{% url 'visualizar_gastos' %}">Vizualizar Gastos</a>
+        <a href="{% url 'listar_aulas' %}">Educação Financeira</a>
+    </div>
+    <header>
+        <div class="header-container">
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span> <!-- Ícone de Menu à esquerda -->
+            <h1>Smart Capital</h1>
+        </div>
+        <div class="nav-links">   
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        </div>
+    </header>
+    <main>
+        <h2>Controle de Gastos</h2>
+        <p>Controlar os gastos é essencial para garantir um uso consciente do dinheiro<br> e alcançar metas financeiras com mais segurança.</p>
+        <div class="img"></div>
+        <img src="{% static 'usuarios/img/logo.png' %}" width="300px" alt="Imagem"><br>
+        </div>
+
+    </main> 
+        <footer>
+        <p>&copy; 2024 Meu Site. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

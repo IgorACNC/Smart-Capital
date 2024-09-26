@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Aulas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; 
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+            color: #003366;
+            font-size: 28px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 40px auto; 
+        }
+        li {
+            margin: 15px 0;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #003366; 
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 100%;
+            max-width: 400px; 
+            transition: background-color 0.3s, transform 0.3s; 
+        }
+        a:hover {
+            background-color: #0056b3;
+            transform: scale(1.05); 
+        }
+        #a1 {
+            text-decoration: none;
+            color: white;
+            background-color: #003366; 
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 100%;
+            max-width: 40px; 
+            transition: background-color 0.3s, transform 0.3s; 
+            margin: 20px auto;
+            margin-left: 20px; 
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <a href="{% url 'home' %}" id="a1">Voltar</a>
+    
+    <h1>Aulas Disponíveis</h1>
+    <ul>
+        <li><a href="{% url 'detalhes_aula' 1 %}">Aula 1 - Introdução à Educação Financeira</a></li>
+        <li><a href="{% url 'detalhes_aula' 2 %}">Aula 2 - Orçamento Pessoal</a></li>
+        <li><a href="{% url 'detalhes_aula' 3 %}">Aula 3 - Investimentos Básicos</a></li>
+        <li><a href="{% url 'detalhes_aula' 4 %}">Aula 4 - Controle de Gastos</a></li>
+        <li><a href="{% url 'detalhes_aula' 5 %}">Aula 5 - Reserva de Emergência</a></li>
+        <li><a href="{% url 'detalhes_aula' 6 %}">Aula 6 - Aposentadoria</a></li>
+        <li><a href="{% url 'detalhes_aula' 7 %}">Aula 7 - Planejamento Financeiro</a></li>
+        <li><a href="{% url 'detalhes_aula' 8 %}">Aula 8 - Dívidas e Crédito</a></li>
+        <li><a href="{% url 'detalhes_aula' 9 %}">Aula 9 - Educação Financeira para Crianças</a></li>
+        <li><a href="{% url 'detalhes_aula' 10 %}">Aula 10 - Investindo em Ações</a></li>
+    </ul>
+</body>
+</html>
