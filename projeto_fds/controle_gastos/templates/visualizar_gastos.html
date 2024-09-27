@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <title>Vizualizar Gastos</title>
+    <title>Visualizar Gastos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -293,14 +293,21 @@
     </style>
 </head>
 <body>
-    
-        <a href="{% url 'gastos' %}" id="a1">Voltar</a>
-   
+    <div class="back-link">
+        <a href="{% url 'gastos' %}">Voltar</a>
+    </div>
     <h2>Meus Gastos</h2>
     <a href="{% url 'add_gastos' %}">Adicionar Novo Gasto</a>
     <ul>
         {% for gasto in gastos %}
-            <li>{{ gasto.descricao }} - R$ {{ gasto.valor }} - {{ gasto.data }} <i class="fa-solid fa-trash"></i></li>
+            <li>
+                {{ gasto.descricao }} - R$ {{ gasto.valor }} - {{ gasto.data }}
+                <form method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="gasto_id" value="{{ gasto.id }}">
+                    <button type="submit" class="fa-solid fa-trash" onclick="return confirm('Você tem certeza que deseja excluir este gasto?');"></button>
+                </form>
+            </li>
         {% empty %}
             <li>Não há gastos registrados.</li>
         {% endfor %}
