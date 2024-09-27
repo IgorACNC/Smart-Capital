@@ -30,7 +30,7 @@ def login(request):
 def logout1(request):
     logout(request)
     messages.info(request, 'Você saiu da sua conta.')
-    return redirect('/usuarios/home')
+    return redirect('home')
 
 
 def home(request):
@@ -69,6 +69,6 @@ def cadastro(request):
 
         login(request) 
         messages.success(request, 'Cadastro realizado com sucesso!')
-        return redirect('/usuarios/login')
+        return redirect('login')
 
     return render(request, 'cadastro.html', {'estados': estados_brasil})

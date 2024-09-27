@@ -5,5 +5,5 @@ urlpatterns = [
     path('cadastro/', cadastro, name='cadastro'),
     path('login/', login, name='login'),
     path('logout/', logout1, name='logout'),
-    path('home/', home, name='home'),
+    path('', home, name='home'),
 ]
