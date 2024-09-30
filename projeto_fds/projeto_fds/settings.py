@@ -91,7 +91,7 @@ NOT_PROD = not TARGET_ENV.lower().startswith('prod')
 
 if NOT_PROD:
     # SECURITY WARNING: don't run with debug turned on in production!
-    DEBUG = False
+    DEBUG = True
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY = 'django-insecure-gv^2)2gsvy232&nvql3mik9^&eqeetyr1=t!du%af38cr%dh*u'
     ALLOWED_HOSTS = []
