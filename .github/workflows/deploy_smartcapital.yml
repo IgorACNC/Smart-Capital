@@ -28,8 +28,21 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
-        
+        run: pip install -r projeto_fds/requirements.txt
+
+      - name: Cleaning testing files
+        run: |
+          cd projeto_fds/
+          rm db.sqlite3
+          rm .env
+          cd ..
+
+      - name: Zip artifact for deployment
+        run: |
+          cd projeto_fds/
+          zip release.zip ./* -r
+          cd ..
+          mv projeto_fds/release.zip .
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
       - name: Zip artifact for deployment
