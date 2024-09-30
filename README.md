@@ -15,6 +15,7 @@
 
    - Link Figma: https://www.figma.com/design/0mc6tmKI8ZHaOIpScGqfJp/Untitled?node-id=1-2&t=Tk5KxfLoLiqDRM5D-1 
 
+   - Link Azure: https://smartcapital-fdd8hfepc3ekdxez.brazilsouth-01.azurewebsites.net/
 
 # Entrega 1️⃣
   <details>
@@ -31,9 +32,11 @@
   <details>
     <summary>Imagens</summary>
     
-![image](https://github.com/user-attachments/assets/9359ea90-9044-4eb7-a578-62ec6940522a)
+![image](https://github.com/user-attachments/assets/45cd043c-af05-4bdd-8da3-543e750f2e65)
 
-![image](https://github.com/user-attachments/assets/1e9d4bdc-4c78-4f41-b7e3-9ded0546ebc5)
+
+![image](https://github.com/user-attachments/assets/8dbb3977-3c9c-4ad8-8661-1325ce574558)
+
 
   </details>
 
