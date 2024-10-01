@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planejamento de Aposentadoria</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="number"], input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #00509e;
+        }
+        .resultado-link {
+            color: #003366; /* Cor azul para o link */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .resultado-link:hover {
+            text-decoration: underline;
+        }
+        #a1 {
+            text-decoration: none;
+            color: #003366;
+            background-color: white; 
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 100%;
+            max-width: 80px; 
+            transition: background-color 0.3s, transform 0.3s;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'gastos' %}" id="a1">Voltar</a>
+        <h1>Planejamento de Aposentadoria</h1>
+    </header>
+    <main>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="idade_atual">Idade Atual:</label>
+            <input type="number" name="idade_atual" required>
+            <br>
+            <label for="idade_aposentadoria">Idade de Aposentadoria Desejada:</label>
+            <input type="number" name="idade_aposentadoria" required>
+            <br>
+            <label for="meta_renda">Meta de Renda para Aposentadoria:</label>
+            <input type="number" step="0.01" name="meta_renda" required>
+            <br>
+            <button type="submit">Calcular</button>
+        </form>
+        <a href="{% url 'listar_planejamentos' %}" class= "resultado-link" >Visualizar Planejamentos</a>
+    </main>
+</body>
+</html>

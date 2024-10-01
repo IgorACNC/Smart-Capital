@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Planejamento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #003366;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        main {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #003366;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        #a1 {
+            text-decoration: none;
+            color: white;
+            background-color: #003366; 
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 100%;
+            max-width: 80px; 
+            transition: background-color 0.3s, transform 0.3s;  
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'planejamento' %}" id="a1">Voltar</a>
+    <header>
+        <h1>Resultado do Planejamento de Aposentadoria</h1>
+    </header>
+    <main>
+        <h2>Dados do Planejamento:</h2>
+        <p>Idade Atual: {{ planejamento.idade_atual }}</p>
+        <p>Idade de Aposentadoria: {{ planejamento.idade_aposentadoria }}</p>
+        <p>Meta de Renda: R$ {{ planejamento.meta_renda }}</p>
+        <p>Valor Mensal a Economizar: R$ {{ planejamento.valor_mensal }}</p>
+    </main>
+</body>
+</html>
