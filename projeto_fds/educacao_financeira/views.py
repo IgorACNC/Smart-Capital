@@ -13,7 +13,6 @@ def visualizar_resumo(request, aula_id):
     return render(request, 'visualizar_resumo.html', {'aula': aula, 'resumo': resumo})
 
 def detalhes_aula(request, aula_id): 
-    aula = get_object_or_404(Aula, id=aula_id)
     resumos = Resumo.objects.filter(aula=aula)
 
     # Truncar o texto ao exibir os resumos
