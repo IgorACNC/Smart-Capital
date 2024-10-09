@@ -12,17 +12,22 @@ def visualizar_resumo(request, aula_id):
     resumo = get_object_or_404(Resumo, aula=aula)
     return render(request, 'visualizar_resumo.html', {'aula': aula, 'resumo': resumo})
 
-def detalhes_aula(request, aula_id): 
+def detalhes_aula(request, aula_id):
+    aula = get_object_or_404(Aula, id=aula_id)
     resumos = Resumo.objects.filter(aula=aula)
 
     # Truncar o texto ao exibir os resumos
     for resumo in resumos:
-        resumo.conteudo_truncado = resumo.conteudo[:100] + '...' if len(resumo.conteudo) > 100 else resumo.conteudo
+        if resumo.conteudo:
+            resumo.conteudo_truncado = resumo.conteudo[:100] + '...' if len(resumo.conteudo) > 100 else resumo.conteudo
 
     if request.method == "POST":
         texto_resumo = request.POST.get('texto')
         usuario = request.user  # Obtendo o usuário logado
-        
+
+        if not request.user.is_authenticated:
+            return JsonResponse({'success': False, 'error': 'Você precisa estar logado para adicionar um resumo.'})
+
         if len(texto_resumo) > 250:
             return JsonResponse({'success': False, 'error': 'Seu resumo é muito longo. O máximo permitido é 250 caracteres.'})
         else:
