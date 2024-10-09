@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula {{ aula.numero }} - {{ aula.titulo }}</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; 
+            color: #333; 
+        }
+        h1 {
+            text-align: center;
+            color: #00509e; 
+            margin-top: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .video-container {
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            margin: 20px;
+            flex-direction: column;  
+        }   
+        .resumo {
+            max-width: 700px; 
+            margin: 30px auto;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .resumo h3 {
+            font-size: 1.5em;
+            color: #00509e;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        textarea {
+            width: 100%; 
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+            min-height: 150px; 
+            max-width: 675px;
+        }
+        form {
+            text-align: center; 
+        }
+        input[type="submit"] {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+            display: inline-block; 
+        }
+        input[type="submit"]:hover {
+            background-color: #00509e;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            color: white;
+            background-color: #003366;
+            padding: 12px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            max-width: 200px;
+        }
+        a:hover {
+            background-color: #00509E;
+        }
+        .resumo-list {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #eaeaea;
+            border-radius: 5px;
+            word-wrap: break-word;  /* Quebra as palavras longas */
+            white-space: normal;  /* Faz com que o texto quebre em múltiplas linhas */
+            overflow-wrap: break-word;  /* Para suporte em navegadores antigos */
+        }
+        .resumo-list p {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ aula.titulo }}</h1>
+    <div class="video-container">
+        {% if aula.youtube_id %}
+        <video width="600" controls>
+            {% load static %}
+            <source src="{% static 'videos/aula1.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        {% else %}
+        <p>Vídeo não disponível.</p>
+        {% endif %}
+    </div>
+    <div class="resumo">
+        <h3>Resumo</h3>
+        <form id="resumoForm" method="POST">
+            {% csrf_token %}
+            <textarea name="texto" rows="5" placeholder="Anote seu resumo aqui"></textarea>
+            <br>
+            <input type="submit" value="Salvar Resumo">
+        </form>
+        <div class="resumo-list">
+            <h4>Resumos Anteriores</h4>
+            <div id="resumos-container">
+                {% for resumo in resumos %}
+                    <p><strong>{{ resumo.usuario.username }}:</strong> {{ resumo.conteudo_truncado }}</p> <!-- Mostrando o conteúdo truncado -->
+                {% empty %}
+                    <p>Nenhum resumo ainda. Seja o primeiro a escrever!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'listar_aulas' %}">Voltar para a lista de aulas</a>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("resumoForm");
+    
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevenindo o envio padrão
+    
+                // Exibindo a mensagem de confirmação
+                const confirmacao = confirm("Você tem certeza de que deseja adicionar este resumo?");
+                if (!confirmacao) {
+                    return; // Se o usuário cancelar, interrompe o envio
+                }
+    
+                // Caso o usuário confirme, prosseguimos com o envio via AJAX
+                const formData = new FormData(form);
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+                fetch("", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "X-CSRFToken": csrfToken
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const resumoContainer = document.getElementById("resumos-container");
+                        const newResumo = document.createElement("p");
+                        newResumo.innerHTML = `<strong>${data.username}:</strong> ${data.conteudo}`;
+                        resumoContainer.prepend(newResumo);  // Insere o novo resumo no topo
+    
+                        form.reset();  // Limpa o textarea após o envio
+                    } else {
+                        alert(data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error("Erro ao salvar o resumo:", error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

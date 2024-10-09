@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar planejamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #003366;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .resultado-link {
+            color: #003366; /* Cor azul para o link */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .resultado-link:hover {
+            text-decoration: underline;
+        }
+
+        .voltar-btn {
+            display: inline-block;
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none; /* Remove o sublinhado */
+        }
+
+        .voltar-btn:hover {
+            background-color: #000102;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Visualizar Planejamentos</h1>
+    </header>
+    <main>
+        <h2>Planejamentos de Aposentadoria</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Idade Atual</th>
+                    <th>Idade de Aposentadoria</th>
+                    <th>Meta de Renda</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for planejamento in planejamentos %}
+                <tr>
+                    <td>{{ planejamento.id }}</td>
+                    <td>{{ planejamento.idade_atual }}</td>
+                    <td>{{ planejamento.idade_aposentadoria }}</td>
+                    <td>R$ {{ planejamento.meta_renda }}</td>
+                    <td>
+                        <a href="{% url 'resultado_planejamento' planejamento.pk %}" class="resultado-link">Ver Resultado</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">Nenhum planejamento encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'planejamento' %}" class="voltar-btn">Voltar</a>
+    </main>
+</body>
+</html>
