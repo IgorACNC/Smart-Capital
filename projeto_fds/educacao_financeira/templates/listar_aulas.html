@@ -11,70 +11,126 @@
             padding: 0;
             background-color: #f8f9fa; 
             color: #333;
+            display: flex;
+            height: 100%; 
+            overflow: hidden; 
         }
-        h1 {
-            text-align: center;
-            margin-top: 40px;
-            color: #003366;
-            font-size: 28px;
+        .sidebar {
+            width: 250px;
+            background-color: #003366;
+            padding: 20px;
+            overflow-y: auto;
+            height: 100vh; 
+            position: fixed;
+            left: 0;
+            top: 0;
         }
-        ul {
+        .sidebar ul {
+            font-weight: bold;
             list-style-type: none;
             padding: 0;
-            max-width: 600px;
-            margin: 40px auto; 
         }
-        li {
+        .sidebar ul li {
             margin: 15px 0;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding: 12px;
+            border-radius: 5px;
+            background-color: #01264d;
+            transition: background-color 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #2b7ed1;
+        }
+        .content {
+            margin-left: 270px; 
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto; 
+            height: 100vh;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
             text-align: center;
         }
-        a {
-            text-decoration: none;
-            color: white;
-            background-color: #003366; 
-            padding: 12px 20px;
-            border-radius: 5px;
-            display: inline-block;
-            width: 100%;
-            max-width: 400px; 
-            transition: background-color 0.3s, transform 0.3s; 
-        }
-        a:hover {
-            background-color: #0056b3;
-            transform: scale(1.05); 
+        h1 {
+            color: #003366;
+            font-size: 32px;
         }
         #a1 {
-            text-decoration: none;
-            color: white;
-            background-color: #003366; 
             padding: 12px 20px;
             border-radius: 5px;
             display: inline-block;
             width: 100%;
             max-width: 40px; 
-            transition: background-color 0.3s, transform 0.3s; 
-            margin: 20px auto;
-            margin-left: 20px; 
+            background-color: rgb(255, 255, 255);
+            color: #003366;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s; 
         }
-        
+        #a1:hover{
+            background-color: black;
+            color: white;
+        }
+        p {
+            width: 70%; 
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 10px;
+            text-align: center;
+        }
+        h2 {
+            color: #003366;
+            font-size: 24px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        ul.topics {
+            width: 70%;
+            text-align: left; 
+            margin: 0 auto; 
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        ul.topics li {
+            margin-bottom: 10px; 
+        }
     </style>
 </head>
 <body>
-    
-    <a href="{% url 'gastos' %}" id="a1">Voltar</a>
-    
-    <h1>Aulas Disponíveis</h1>
-    <ul>
-        <li><a href="{% url 'detalhes_aula' 11 %}">Aula 1 - Introdução à Educação Financeira</a></li>
-        <li><a href="{% url 'detalhes_aula' 12 %}">Aula 2 - Orçamento Pessoal</a></li>
-        <li><a href="{% url 'detalhes_aula' 13 %}">Aula 3 - Investimentos Básicos</a></li>
-        <li><a href="{% url 'detalhes_aula' 14 %}">Aula 4 - Controle de Gastos</a></li>
-        <li><a href="{% url 'detalhes_aula' 15 %}">Aula 5 - Reserva de Emergência</a></li>
-        <li><a href="{% url 'detalhes_aula' 16 %}">Aula 6 - Aposentadoria</a></li>
-        <li><a href="{% url 'detalhes_aula' 17 %}">Aula 7 - Planejamento Financeiro</a></li>
-        <li><a href="{% url 'detalhes_aula' 18 %}">Aula 8 - Dívidas e Crédito</a></li>
-        <li><a href="{% url 'detalhes_aula' 19 %}">Aula 9 - Educação Financeira para Crianças</a></li>
-        <li><a href="{% url 'detalhes_aula' 20 %}">Aula 10 - Investindo em Ações</a></li>
-    </ul>
+    <div class="sidebar">
+        <a href="{% url 'gastos' %}" id="a1">Voltar</a>
+        <ul>
+            <li><a href="{% url 'detalhes_aula' 11 %}">Aula 1 - Introdução à Educação Financeira</a></li>
+            <li><a href="{% url 'detalhes_aula' 12 %}">Aula 2 - Orçamento Pessoal</a></li>
+            <li><a href="{% url 'detalhes_aula' 13 %}">Aula 3 - Investimentos Básicos</a></li>
+            <li><a href="{% url 'detalhes_aula' 14 %}">Aula 4 - Controle de Gastos</a></li>
+            <li><a href="{% url 'detalhes_aula' 15 %}">Aula 5 - Reserva de Emergência</a></li>
+            <li><a href="{% url 'detalhes_aula' 16 %}">Aula 6 - Aposentadoria</a></li>
+            <li><a href="{% url 'detalhes_aula' 17 %}">Aula 7 - Planejamento Financeiro</a></li>
+            <li><a href="{% url 'detalhes_aula' 18 %}">Aula 8 - Dívidas e Crédito</a></li>
+            <li><a href="{% url 'detalhes_aula' 19 %}">Aula 9 - Educação Financeira para Crianças</a></li>
+            <li><a href="{% url 'detalhes_aula' 20 %}">Aula 10 - Investindo em Ações</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Bem-vindo à nossa Plataforma de Educação Financeira!</h1> 
+        <p>Nesta aba, criamos um espaço dedicado a ajudar você a dominar suas finanças de forma simples e prática, através de uma série de videoaulas organizadas para facilitar o aprendizado.</p>
+
+        <h2>O que você vai encontrar:</h2>
+        <ul class="topics">
+            <li><strong>Navegação Intuitiva:</strong> À esquerda, uma barra lateral com uma lista clara de tópicos essenciais, como Introdução à Educação Financeira, Orçamento Pessoal, Investimentos Básicos, entre outros.</li>
+            <li><strong>Aulas Estruturadas:</strong> Cada aula foi cuidadosamente desenvolvida para que você possa avançar no seu próprio ritmo, absorvendo conteúdos práticos que vão transformar sua forma de lidar com dinheiro.</li>
+        </ul>
+
+    </div>
 </body>
 </html>
