@@ -103,10 +103,9 @@
     <div class="video-container">
             {% load static %}
             <video width="640" height="480" controls>
-                <source src="{% static 'videos/' %}{{ aula.video_path }}" type="video/mp4">
+                <source src="{% static aula.video_path %}" type="video/mp4">
                 Seu navegador não suporta o elemento de vídeo.
             </video>
-            
     </div>
     <div class="resumo">
         <h3>Resumo</h3>
