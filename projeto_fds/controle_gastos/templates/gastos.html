@@ -156,10 +156,12 @@
 </head>
 <body>
     <div class="sidebar" id="sidebar">
+
         <a href="{% url 'add_gastos' %}">Adicionar Gastos</a>
         <a href="{% url 'visualizar_gastos' %}">Visualizar Gastos</a>
         <a href="{% url 'listar_aulas' %}">Educação Financeira</a>
         <a href="{% url 'planejamento' %}">Planejamento Aposentadoria</a>
+        <a href="{% url 'calcular_imposto' %}">Imposto de Renda</a>
     </div>
     <header>
         <div class="header-container">
@@ -181,7 +183,7 @@
         </div>
     </main> 
         <footer>
-        <p>&copy; Copyright © 2024 Smart Capital - Todos os direitos reservados.</p>
+        <p>© 2024 Smart Capital - Todos os direitos reservados.</p>
     </footer>
     <script>
         function toggleMenu() {
