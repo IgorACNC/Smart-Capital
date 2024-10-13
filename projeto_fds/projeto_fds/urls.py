@@ -8,7 +8,8 @@ urlpatterns = [
     path('', include('usuarios.urls')),
     path('controle_gastos/', include('controle_gastos.urls')),
     path('educacao-financeira/', include('educacao_financeira.urls')),
-    path('planejamento/', include('planejamento_aposentadoria.urls'))
+    path('planejamento/', include('planejamento_aposentadoria.urls')),
+    path('imposto_renda/', include('imposto_renda.urls')),
 ]
 
 if settings.DEBUG:
