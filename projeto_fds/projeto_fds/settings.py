@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'controle_gastos',
     'educacao_financeira',
     "whitenoise.runserver_nostatic",
-    'planejamento_aposentadoria'
+    'planejamento_aposentadoria',
+    'imposto_renda'
 ]
 
 Loguin_redir_url = 'home'
