@@ -114,13 +114,24 @@
             bottom: 0;
             width: 100%;
         }
+
+        #a1 {
+            text-decoration: none;
+            color: #003366;
+            background-color: white; 
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 100%;
+            max-width: 80px; 
+            transition: background-color 0.3s, transform 0.3s;
+            float: left;
+        }
     </style>
 </head>
 <body>
-
-    <a href="{% url 'gastos' %}" id="a1">Voltar</a>
-
     <header>
+        <a href="{% url 'gastos' %}" id="a1">Voltar</a>
         <h1>Calcular Imposto de Renda</h1>
     </header>
 
