@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'educacao_financeira',
     "whitenoise.runserver_nostatic",
     'planejamento_aposentadoria',
+<<<<<<< Updated upstream
     'imposto_renda'
+=======
+    'simulacao_investimentos',
+>>>>>>> Stashed changes
 ]
 
 Loguin_redir_url = 'home'

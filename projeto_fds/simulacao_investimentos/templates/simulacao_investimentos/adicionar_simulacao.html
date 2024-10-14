@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Investimento</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Simule seu investimento de forma fácil e rápida.">
+</head>
+<body>
+    <main>
+        <h2>Simular Investimento</h2>
+
+        {% if messages %}
+          <ul class="mensagens">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Informações do Investimento</legend>
+
+                <label for="valor_investimento">Valor do Investimento:</label>
+                <input type="number" step="0.01" name="valor_investimento" id="valor_investimento" min="0" required placeholder="Ex: 1000.00" value="{{ valor_investimento|default:'' }}">
+
+                <label for="periodo_investimento">Período do Investimento (meses):</label>
+                <input type="number" name="periodo_investimento" id="periodo_investimento" min="1" required placeholder="Ex: 12" value="{{ periodo_investimento|default:'' }}">
+
+                <label for="perfil_risco">Perfil de Risco:</label>
+                <select name="perfil_risco" id="perfil_risco" required>
+                  <option value="" disabled {% if not perfil_risco %}selected{% endif %}>Selecione o perfil de risco</option>
+                  <option value="baixo" {% if perfil_risco == 'baixo' %}selected{% endif %}>Baixo</option>
+                  <option value="medio" {% if perfil_risco == 'medio' %}selected{% endif %}>Médio</option>
+                  <option value="alto" {% if perfil_risco == 'alto' %}selected{% endif %}>Alto</option>
+                </select>
+            </fieldset>
+
+            <button type="submit">Enviar Simulação</button>
+        </form>
+    </main>
+
+    <script>
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'error' in message.tags %}
+                    alert("{{ message }}");
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </script>
+</body>
+</html>

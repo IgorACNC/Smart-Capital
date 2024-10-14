@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Investimentos</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta name="description" content="Visualize seus investimentos e retornos estimados de forma detalhada.">
+    <meta name="keywords" content="investimentos, finanças, retornos, perfil de risco">
+</head>
+<body>
+    <main>
+        <h2>Seus Investimentos</h2>
+
+        {% if investimentos_com_retorno %}
+            <table class="investimentos-table">
+                <caption>Detalhes dos seus investimentos e retornos estimados</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Valor Investido</th>
+                        <th scope="col">Período (meses)</th>
+                        <th scope="col">Perfil de Risco</th>
+                        <th scope="col">Retorno Estimado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in investimentos_com_retorno %}
+                        <tr>
+                            <td data-label="Valor Investido">R$ {{ item.investimento.valor_investimento|floatformat:2 }}</td>
+                            <td data-label="Período (meses)">{{ item.investimento.periodo_investimento }}</td>
+                            <td data-label="Perfil de Risco">{{ item.investimento.perfil_risco|title }}</td>
+                            <td data-label="Retorno Estimado">R$ {{ item.retorno_estimado|floatformat:2 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Você ainda não possui investimentos cadastrados.</p>
+        {% endif %}
+
+        <p><a href="{% url 'adicionar_simulacao' %}">Adicionar novo investimento</a></p>
+    </main>
+</body>
+</html>
