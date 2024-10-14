@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado do Cálculo - Smart Capital</title>
+    <style>
+        /* Geral */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #004085;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Container Principal */
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        /* Resultado */
+        .result-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #003366;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #004085;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Smart Capital - Resultado do Cálculo de Imposto</h1>
+    </header>
+    <main>
+        <div class="result-container">
+            <h2>Resultado do Cálculo</h2>
+            <p><strong>Nome:</strong> {{ nome }}</p>
+            <p><strong>Imposto Total Calculado:</strong> R$ {{ imposto }}</p>
+            <h3>Detalhes do Cálculo:</h3>
+            <ul>
+                {% for item in explicacao %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'calcular_imposto' %}" class="btn">Calcular Novamente</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Smart Capital - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

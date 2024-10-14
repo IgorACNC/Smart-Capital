@@ -1,4 +1,4 @@
-{% csrf_token %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -101,11 +101,11 @@
 <body>
     <h1>{{ aula.titulo }}</h1>
     <div class="video-container">
-        {% load static %}
-        <video width="600" controls>
-            <source src="{% static 'videos/aula1.mp4' %}" type="video/mp4">
-            Seu navegador não suporta o elemento de vídeo.
-        </video>
+            {% load static %}
+            <video width="640" height="480" controls>
+                <source src="{% static aula.video_path %}" type="video/mp4">
+                Seu navegador não suporta o elemento de vídeo.
+            </video>
     </div>
     <div class="resumo">
         <h3>Resumo</h3>
