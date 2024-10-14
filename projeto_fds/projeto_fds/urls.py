@@ -10,6 +10,7 @@ urlpatterns = [
     path('educacao-financeira/', include('educacao_financeira.urls')),
     path('planejamento/', include('planejamento_aposentadoria.urls')),
     path('imposto_renda/', include('imposto_renda.urls')),
+    path('simulacao/', include('simulacao_investimentos.urls'))
 ]
 
 if settings.DEBUG:

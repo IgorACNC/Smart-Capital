@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulação de Investimento</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Simule seu investimento de forma fácil e rápida.">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        margin: 0;
+        padding: 20px;
+    }
+    main {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #003366; 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        max-width: 50%; 
+        margin: 50px auto; 
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    main:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); 
+    }
+    h2 {
+        color: #003366; 
+        text-align: center; 
+    }
+    fieldset {
+        border: 1px solid #003366; 
+        border-radius: 10px;
+        padding: 20px;
+    }
+    legend {
+        color: #003366; 
+        font-weight: bold;
+    }
+    label {
+        display: block;
+        margin-bottom: 15px;
+    }
+    input, select {
+        width: 95%; 
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        background-color: #003366; 
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+    button:hover {
+        background-color: rgb(16, 28, 99); 
+    }
+    .mensagens {
+        margin: 20px 0;
+    }
+    .mensagens li {
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    
+    #a1 {
+        text-decoration: none;
+        color: white;
+        background-color: #003366; /* Azul padrão de botões */
+        padding: 12px 20px;
+        border-radius: 5px;
+        display: inline-block;
+        width: 100%;
+        max-width: 40px; 
+        transition: background-color 0.3s, transform 0.3s; 
+    }
+    .button-link {
+        background-color: #003366; 
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .button-link:hover {
+        background-color: rgb(16, 28, 99); 
+    }
+    
+    </style>
+</head>
+<body>
+    <a href="{% url 'gastos' %}" id="a1">Voltar</a>
+    <main>
+        <h2>Simular Investimento</h2>
+
+        {% if messages %}
+          <ul class="mensagens">
+            {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Informações do Investimento</legend>
+
+                <label for="valor_investimento">Valor do Investimento:</label>
+                <input type="number" step="0.01" name="valor_investimento" id="valor_investimento" min="0" required placeholder="Ex: 1000.00" value="{{ valor_investimento|default:'' }}">
+
+                <label for="periodo_investimento">Período do Investimento (meses):</label>
+                <input type="number" name="periodo_investimento" id="periodo_investimento" min="1" required placeholder="Ex: 12" value="{{ periodo_investimento|default:'' }}">
+
+                <label for="perfil_risco">Perfil de Risco:</label>
+                <select name="perfil_risco" id="perfil_risco" required>
+                  <option value="" disabled {% if not perfil_risco %}selected{% endif %}>Selecione o perfil de risco</option>
+                  <option value="baixo" {% if perfil_risco == 'baixo' %}selected{% endif %}>Baixo</option>
+                  <option value="medio" {% if perfil_risco == 'medio' %}selected{% endif %}>Médio</option>
+                  <option value="alto" {% if perfil_risco == 'alto' %}selected{% endif %}>Alto</option>
+                </select>
+            </fieldset>
+            <br>
+            <a href="{% url 'listar_investimentos' %}"><button type="submit">Enviar Simulação</button></a>
+            <br><br><br><br>
+            <a href="{% url 'listar_investimentos' %}" class="button-link">Listar Investimentos Simulados</a>
+        </form>
+    </main>
+
+    <script>
+        {% if messages %}
+            {% for message in messages %}
+                {% if 'error' in message.tags %}
+                    alert("{{ message }}");
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </script>
+</body>
+</html>

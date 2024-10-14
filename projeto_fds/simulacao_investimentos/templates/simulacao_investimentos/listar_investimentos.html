@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Investimentos</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta name="description" content="Visualize seus investimentos e retornos estimados de forma detalhada.">
+    <meta name="keywords" content="investimentos, finanças, retornos, perfil de risco">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        main {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #003366;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 50px auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        } 
+
+        h2 {
+            color:  #003366;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            border: 1px solid #003366;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        legend {
+            color: #003366;
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        input, select {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: black;
+        }  
+
+        .mensagens {
+            margin: 20px 0;
+        }
+
+        .mensagens li {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }   
+
+        table.investimentos-table {
+            width: 80%; 
+            max-width: 600px; 
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        table.investimentos-table caption {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        table.investimentos-table th, table.investimentos-table td {
+            border: 1px solid #003366;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table.investimentos-table th {
+            background-color: #003366;
+            color: white;
+        }
+
+        table.investimentos-table td {
+            background-color: #e1f5fe;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a.btn-center {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #003366;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        a.btn-center:hover {
+            background-color:  rgb(16, 28, 99); /
+        }
+        #a1 {
+            text-decoration: none;
+            color: white;
+            background-color: #003366; /* Azul padrão de botões */
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 100%;
+            max-width: 40px; 
+            transition: background-color 0.3s, transform 0.3s; 
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'gastos' %}" id="a1">Voltar</a>
+    <main>
+        <h2>Seus Investimentos</h2>
+        {% if investimentos_com_retorno %}
+            <table class="investimentos-table">
+                <caption>Detalhes dos seus investimentos e retornos estimados</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Valor Investido</th>
+                        <th scope="col">Período (meses)</th>
+                        <th scope="col">Perfil de Risco</th>
+                        <th scope="col">Retorno Estimado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in investimentos_com_retorno %}
+                        <tr>
+                            <td data-label="Valor Investido">R$ {{ item.investimento.valor_investimento|floatformat:2 }}</td>
+                            <td data-label="Período (meses)">{{ item.investimento.periodo_investimento }}</td>
+                            <td data-label="Perfil de Risco">{{ item.investimento.perfil_risco|title }}</td>
+                            <td data-label="Retorno Estimado">R$ {{ item.retorno_estimado|floatformat:2 }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Você ainda não possui investimentos cadastrados.</p>
+        {% endif %}
+
+        <p><a href="{% url 'adicionar_simulacao' %}" class="btn-center">Adicionar novo investimento</a></p>
+    </main>
+</body>
+</html>
