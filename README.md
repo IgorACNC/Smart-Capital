@@ -40,6 +40,25 @@
 -Link Screecast: https://youtu.be/BnuWd6ydI1E
   </details>
 
+   # Entrega 3️⃣
+  <details>
+    <summary>Imagens</summary>
+
+![image](https://github.com/user-attachments/assets/027b13eb-d8a2-401a-af1f-38d21553a4f9)
+
+
+ 
+![image](https://github.com/user-attachments/assets/8d9f55f5-64f8-40de-8674-cb17cfceaa7a)
+
+
+
+- Link Screecast Figma:
+
+- Link Screecast Deploy:
+
+- Link Screecast Testes:
+  </details>
+
 
 
 
