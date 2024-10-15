@@ -75,7 +75,7 @@
 </head>
 <body>
     <h1>Histórico de Cálculos de Imposto</h1>
-    <a class="btn-voltar" href="{% url 'calcular_imposto' %}" id="a1">Voltar</a>
+    <a class="btn-voltar" href="{% url 'calculo_imposto' %}" id="a1">Voltar</a>
     <table>
         <tr>
             <th>Nome</th>
@@ -92,6 +92,6 @@
         </tr>
         {% endfor %}
     </table>
-    <a href="{% url 'calcular_imposto' %}" class="back-button">Novo Cálculo</a>
+    <a href="{% url 'calculo_imposto' %}" class="back-button">Novo Cálculo</a>
 </body>
 </html>

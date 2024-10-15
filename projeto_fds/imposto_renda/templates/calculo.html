@@ -1,40 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcular Imposto de Renda - Smart Capital</title>
+    <title>Calcular Imposto - Smart Capital</title>
     <style>
-        /* Estilo Geral */
+        /* Seu CSS existente */
+        /* Reset básico */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Fonte e cores */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #ffffff;
-        }
-
-        /* Botão Voltar para Home */
-        .btn-voltar {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            background-color: white;
-            color: #003366;
-            padding: 10px 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn-voltar:hover {
-            background-color: #f0f0f0;
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            overflow-x: hidden;
         }
 
         /* Cabeçalho */
@@ -43,90 +25,80 @@
             color: white;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         /* Container Principal */
         main {
-            padding: 50px 20px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
         }
 
-        main h2 {
-            font-size: 32px;
-            color: #333;
+        /* Estilização do Formulário */
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #003366;
             margin-bottom: 20px;
         }
 
-        main p {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 30px;
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
-        /* Formulário */
-        .form-container {
-            background-color: #f4f4f9;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-control {
+        input[type="text"], input[type="number"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: border-color 0.3s;
         }
 
-        .btn {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            text-align: center;
-            cursor: pointer;
-            display: inline-block;
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: #003366;
+            outline: none;
         }
 
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        /* Rodapé */
-        footer {
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
             background-color: #003366;
             color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
         }
 
-        #a1 {
-            text-decoration: none;
-            color: #003366;
-            background-color: white; 
-            padding: 12px 20px;
-            border-radius: 5px;
-            display: inline-block;
-            width: 100%;
-            max-width: 80px; 
-            transition: background-color 0.3s, transform 0.3s;
-            float: left;
+        input[type="submit"]:hover {
+            background-color: black;
         }
+
+        input[type="submit"]:active {
+            transform: scale(0.98);
+        }
+
         .btn {
             display: inline-block;
             background-color: #003366;
@@ -138,7 +110,38 @@
             cursor: pointer;
             margin-top: 20px;
         }
-        btn-voltar {
+
+        .btn:hover {
+            background-color: black;
+        }
+
+        /* Animação de Fade In */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInAnimation 1s forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .btn-voltar {
             position: fixed;
             top: 10px;
             left: 10px;
@@ -157,32 +160,45 @@
 </head>
 <body>
     <header>
-        <a class="btn-voltar" href="{% url 'gastos' %}" id="a1">Voltar</a>
         <h1>Calcular Imposto de Renda</h1>
+        <a class="btn-voltar" href="{% url 'gastos' %}" id="a1">Voltar</a>
     </header>
-
     <main>
-        <h2>Insira seus dados para calcular o imposto</h2>
-        <div class="form-container">
-            <form method="post">
+        <div class="form-container fade-in">
+            <h2>Calcule seu Imposto de Renda</h2>
+            <form method="POST">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input type="text" name="nome" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="renda_anual">Renda Anual:</label>
-                    <input type="number" name="renda_anual" step="0.01" class="form-control" required>
-                </div>
-                <button type="submit" class="btn">Calcular</button>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome"
+                required>
+                <label for="renda_anual">Renda Anual:</label>
+                <input type="number" id="renda_anual" name="renda_anual" placeholder="Digite sua renda anual" step="0.01" required>
+                <input type="submit" value="Calcular">
             </form>
             <a href="{% url 'historico' %}" class="btn">Exibir Histórico</a>
         </div>
     </main>
-
     <footer>
-        <p>© 2024 Smart Capital - Todos os direitos reservados.</p>
+        <p>© 2024 Smart Capital</p>
     </footer>
 
+    <script>
+        // Animação de entrada ao carregar a página
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.form-container');
+            container.classList.add('fade-in');
+        });
+
+        // Verifica se os campos são válidos antes de enviar o formulário
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const nome = document.getElementById('nome').value.trim();
+            const renda = document.getElementById('renda_anual').value;
+
+            if (!nome || renda <= 0) {
+                alert('Por favor, preencha todos os campos corretamente.');
+                event.preventDefault(); // Evita o envio do formulário se os dados estiverem incorretos
+            }
+        });
+    </script>
 </body>
 </html>
