@@ -56,3 +56,8 @@ def calcular_imposto(request):
         return render(request, 'resultados.html', {'nome': nome, 'imposto': imposto, 'explicacao': explicacao})
 
     return render(request, 'calculo.html')
+
+
+def historico_calculos(request):
+    calculos = ImpostoRenda.objects.all().order_by('-data_calculo')
+    return render(request, 'historico.html', {'calculos': calculos})
