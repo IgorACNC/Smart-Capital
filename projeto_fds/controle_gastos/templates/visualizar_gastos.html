@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
     <title>Visualizar Gastos</title>
     <style>
         body {
@@ -80,12 +79,24 @@
             max-width: 40px; 
             transition: background-color 0.3s, transform 0.3s;  
         }
+        .excluir{
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .excluir:hover {
+            background-color: black;
+        }
     </style>
 </head>
 <body>
     <div class="back-link">
         <a href="{% url 'gastos' %}">Voltar</a>
     </div>
+
+    <!-- Seção de gastos -->
     <h2>Meus Gastos</h2>
     <a href="{% url 'add_gastos' %}">Adicionar Novo Gasto</a>
     <ul>
@@ -102,7 +113,9 @@
             <li>Não há gastos registrados.</li>
         {% endfor %}
     </ul>
+    <p>Total de Gastos: R$ {{ total_gastos }}</p>
 
+    <!-- Seção de mensagens -->
     {% if messages %}
     <div class="messages">
         {% for message in messages %}
@@ -111,6 +124,22 @@
             </div>
         {% endfor %}
     </div>
+    {% endif %}
+
+    <!-- Seção de metas de gastos -->
+    {% if meta %}
+        <h2>Meta de Gastos</h2>
+        <p>Meta de Gastos: R$ {{ meta.valor_meta }}</p>
+        {% if meta_ultrapassada %}
+            <p style="color: red;">Aviso: Você ultrapassou sua meta de gastos!</p>
+        {% endif %}
+        <form method="POST" action="{% url 'excluir_meta' %}">
+            {% csrf_token %}
+            <button type="submit" class='excluir'>Excluir Meta</button>
+        </form>
+    {% else %}
+        <h2>Meta de Gastos</h2>
+        <a href="{% url 'add_meta' %}">Adicionar Meta de Gastos</a>
     {% endif %}
 </body>
 </html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Meta de Gastos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+            text-align: center; /* Centraliza o título */
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #003366; /* Borda do formulário */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra para o efeito de caixa */
+            max-width: 400px;
+            margin: 20px auto; /* Centraliza o formulário */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+        }
+        form:hover {
+            transform: translateY(-5px); /* Elevação ao passar o mouse */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Sombra mais forte ao passar o mouse */
+        }
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        input {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: black;
+        }
+        .messages {
+            margin: 20px 0;
+        }
+        .message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        #a1 {
+            text-decoration: none;
+            color: white;
+            background-color: #003366; /* Azul padrão de botões */
+            padding: 12px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            width: 100%;
+            max-width: 40px; 
+            transition: background-color 0.3s, transform 0.3s; 
+        }
+        #a1:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="{% url 'gastos' %}" id="a1">Voltar</a>
+
+    <h2>Adicionar Meta de Gastos</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="valor_meta">Valor da Meta:</label>
+        <input type="text" id="valor_meta" name="valor_meta" required>
+
+        <button type="submit">Salvar Meta</button>
+    </form>
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</body>
+</html>
