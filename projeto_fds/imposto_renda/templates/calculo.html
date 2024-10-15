@@ -127,11 +127,37 @@
             transition: background-color 0.3s, transform 0.3s;
             float: left;
         }
+        .btn {
+            display: inline-block;
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        btn-voltar {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color:#003366;
+            color: #003366;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color:white;
+        }
     </style>
 </head>
 <body>
     <header>
-        <a href="{% url 'gastos' %}" id="a1">Voltar</a>
+        <a class="btn-voltar" href="{% url 'gastos' %}" id="a1">Voltar</a>
         <h1>Calcular Imposto de Renda</h1>
     </header>
 
@@ -150,6 +176,7 @@
                 </div>
                 <button type="submit" class="btn">Calcular</button>
             </form>
+            <a href="{% url 'historico' %}" class="btn">Exibir Histórico</a>
         </div>
     </main>
 

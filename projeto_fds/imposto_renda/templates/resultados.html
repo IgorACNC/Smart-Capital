@@ -40,13 +40,14 @@
 
         .btn {
             display: inline-block;
-            background-color: #0056b3;
+            background-color: #003366;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
-            border-radius: 4px;
-            text-align: center;
+            border-radius: 5px;
+            transition: background 0.3s;
             cursor: pointer;
+            margin-top: 20px;
         }
 
         .btn:hover {
@@ -78,6 +79,7 @@
                 {% endfor %}
             </ul>
             <a href="{% url 'calcular_imposto' %}" class="btn">Calcular Novamente</a>
+            <a href="{% url 'historico' %}" class="btn">Exibir Histórico</a>
         </div>
     </main>
     <footer>

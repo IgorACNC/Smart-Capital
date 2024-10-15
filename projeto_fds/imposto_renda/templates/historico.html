@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Histórico de Cálculos - Smart Capital</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #003366;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #003366;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #003366;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #00264d;
+        }
+
+        .back-button:active {
+            transform: scale(0.98);
+        }
+        .btn-voltar {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: white;
+            color: white;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color:#003366;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Histórico de Cálculos de Imposto</h1>
+    <a class="btn-voltar" href="{% url 'calcular_imposto' %}" id="a1">Voltar</a>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Renda Anual</th>
+            <th>Imposto Calculado</th>
+            <th>Data do Cálculo</th>
+        </tr>
+        {% for calculo in calculos %}
+        <tr>
+            <td>{{ calculo.nome }}</td>
+            <td>R$ {{ calculo.renda_anual }}</td>
+            <td>R$ {{ calculo.imposto_calculado }}</td>
+            <td>{{ calculo.data_calculo|date:"d/m/Y H:i" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'calcular_imposto' %}" class="back-button">Novo Cálculo</a>
+</body>
+</html>
