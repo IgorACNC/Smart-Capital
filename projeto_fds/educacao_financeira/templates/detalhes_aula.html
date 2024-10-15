@@ -102,9 +102,9 @@
     <h1>{{ aula.titulo }}</h1>
     <div class="video-container">
             {% load static %}
-            <video width="640" height="480" controls>
-                <video src="/static/videos/aula1.mp4"></video>
-                Seu navegador não suporta o elemento de vídeo.
+            <video controls>
+                <source src="{{ MEDIA_URL }}videos/{{ aula.aula1 }}" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
     </div>
     <div class="resumo">
