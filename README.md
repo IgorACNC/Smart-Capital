@@ -54,7 +54,7 @@
 
 - Link Screecast Figma:
 
-- Link Screecast Deploy:
+- Link Screecast Deploy: https://youtu.be/4BhFss6HCg8
 
 - Link Screecast Testes:
   </details>
