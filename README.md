@@ -52,7 +52,7 @@
 
 
 
-- Link Screecast Figma:
+- Link Screecast Figma: https://youtu.be/zGrDxc43jtc
 
 - Link Screecast Deploy: https://youtu.be/RLVR0V68qho
 
