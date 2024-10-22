@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "https://smartcapital-fdd8hfepc3ekdxez.brazilsouth-01.azurewebsites.net/",
+    baseUrl: "http://127.0.0.1:8000/",
     viewportWidth: 1920,
     viewportHeight: 1080,
     watchForFileChanges: false,
