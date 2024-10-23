@@ -27,6 +27,7 @@ describe('test suite 1', () => {
         cy.get('button').click()
         cy.wait(10000)
         cy.visit('/admin');
+        cy.wait(4000)
         cy.get('#id_username').click()
         cy.get('#id_username').type('iacnc')
         cy.get('#id_password').click()

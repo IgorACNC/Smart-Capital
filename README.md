@@ -56,7 +56,7 @@
 
 - Link Screecast Deploy: https://youtu.be/RLVR0V68qho
 
-- Link Screecast Testes: https://youtu.be/JxZ0YUC0vh8
+- Link Screecast Testes: https://youtu.be/u1QhNA6r7mA
   </details>
 
 
