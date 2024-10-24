@@ -50,6 +50,8 @@
  
 ![image](https://github.com/user-attachments/assets/8d9f55f5-64f8-40de-8674-cb17cfceaa7a)
 
+![image](https://github.com/user-attachments/assets/e0dd730b-5bfc-4d21-874d-7e8a47c60e63)
+
 
 
 - Link Screecast Figma: https://youtu.be/zGrDxc43jtc
