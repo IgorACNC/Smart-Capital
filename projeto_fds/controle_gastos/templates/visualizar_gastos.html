@@ -128,7 +128,9 @@
                     {% endif %}
     
                     <!-- Botão para excluir -->
-                    <button type="submit" class="fa-solid fa-trash" onclick="return confirm('Você tem certeza que deseja excluir este gasto?');"></button>
+                    <a href="{% url 'excluir_gasto' gasto.id %}" onclick="return confirm('Você tem certeza que deseja excluir este gasto?');">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
                 </form>
             </li>
         {% empty %}
