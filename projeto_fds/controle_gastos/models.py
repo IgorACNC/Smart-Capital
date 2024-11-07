@@ -21,3 +21,15 @@ class MetaGasto(models.Model):
 
     def checar_valor_ultrapassado(self, total_gastos):
         return total_gastos >= self.valor_meta
+
+class FiltroGasto(models.Model):
+    CATEGORIAS = [
+        ('roupa', 'Roupa'),
+        ('eletronico', 'Eletrônico'),
+        ('comida', 'Comida'),
+    ]
+    gasto = models.ForeignKey(Gasto, on_delete=models.CASCADE)
+    categoria = models.CharField(max_length=50, choices=CATEGORIAS)
+    
+    def __str__(self):
+        return f"{self.gasto.descricao} - {self.categoria}"
