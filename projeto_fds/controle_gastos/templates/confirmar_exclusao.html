@@ -53,7 +53,7 @@
         <p>Tem certeza de que deseja excluir o gasto "{{ gasto.descricao }}"?</p>
         <form method="POST">
             {% csrf_token %}
-            <button type="submit">Excluir</button>
+            <button type="submit" class="excluir">Excluir</button>
             <a href="{% url 'visualizar_gastos' %}" class="cancel-btn">Cancelar</a>
         </form>
     </div>
