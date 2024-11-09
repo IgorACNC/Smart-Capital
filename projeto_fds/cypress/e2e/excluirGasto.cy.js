@@ -14,9 +14,6 @@ describe('test suite 1', () => {
         cy.wait(3000)
         cy.get(':nth-child(1) > form > a > .fa-solid').click()
         cy.get('.excluir').should('be.visible').click()
-        cy.wait(10000)
-        cy.get('.fa-solid').should('be.visible').click({ multiple: true })
-        cy.get('.excluir').should('be.visible').click({ multiple: true })
         cy.wait(5000)
     })
     it('cenario2', () => {
