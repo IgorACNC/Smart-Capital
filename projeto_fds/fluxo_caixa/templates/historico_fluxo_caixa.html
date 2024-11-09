@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Fluxo de Caixa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        table:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #003366;
+            color: white;
+        }
+        td:last-child {
+            color: #333;
+        }
+        .link-voltar {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .link-voltar a {
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .link-voltar a:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="link-voltar">
+        <a href="{% url 'calcular_fluxo_caixa' %}">Voltar para Cálculo</a>
+    </div>
+    <h2>Histórico de Fluxo de Caixa</h2>
+    <table>
+        <tr>
+            <th>Período</th>
+            <th>EBIT</th>
+            <th>IR</th>
+            <th>Depreciação</th>
+            <th>Receita Total</th>
+            <th>Despesa Total</th>
+            <th>Fluxo de Caixa Operacional (FCO)</th>
+            <th>Data</th>
+        </tr>
+        {% for item in historico %}
+        <tr>
+            <td>{{ item.periodo }}</td>
+            <td>{{ item.ebit }}</td>
+            <td>{{ item.ir }}</td>
+            <td>{{ item.depreciacao }}</td>
+            <td>{{ item.receita_total }}</td>
+            <td>{{ item.despesa_total }}</td>
+            <td>{{ item.fluxo_caixa_operacional }}</td>
+            <td>{{ item.data_calculo }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

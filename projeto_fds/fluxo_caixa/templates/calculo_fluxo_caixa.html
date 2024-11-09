@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Fluxo de Caixa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        form:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        input, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background-color: #003366;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #001a33;
+        }
+        .link-historico {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .link-historico a {
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .link-historico a:hover {
+            background-color: black;
+        }
+        a {
+            background-color: #003366;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        a:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="back-link">
+        <a href="{% url 'gastos' %}">Voltar</a>
+    </div>
+    <h2>Calcular Fluxo de Caixa</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="periodo">Período:</label>
+        <input type="text" name="periodo" required placeholder="Ex: Janeiro 2024">
+
+        <label for="ebit">EBIT:</label>
+        <input type="number" name="ebit" step="0.01" required>
+
+        <label for="ir">IR (Imposto de Renda):</label>
+        <input type="number" name="ir" step="0.01" required>
+
+        <label for="depreciacao">Depreciação:</label>
+        <input type="number" name="depreciacao" step="0.01" required>
+
+        <label for="receita_total">Receita Total:</label>
+        <input type="number" name="receita_total" step="0.01" required>
+
+        <label for="despesa_total">Despesa Total:</label>
+        <input type="number" name="despesa_total" step="0.01" required>
+
+        <button type="submit">Calcular Fluxo de Caixa</button>
+    </form>
+    <div class="link-historico">
+        <a href="{% url 'historico_fluxo_caixa' %}">Ver Histórico de Cálculos</a>
+    </div>
+</body>
+</html>
