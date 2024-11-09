@@ -2,40 +2,56 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib import messages
-from .models import Gasto, MetaGasto
+from .models import Gasto, MetaGasto, FiltroGasto
+from django.db import transaction
+
+from django.db import transaction  # Para garantir consistência na operação de adicionar filtro
 
 @login_required
 def visualizar_gastos(request):
-    # Pegando os gastos do usuário
     gastos = Gasto.objects.filter(usuario=request.user)
-    
-    # Calculando o total de gastos
-    total_gastos = sum(gasto.valor for gasto in gastos)
-    
-    # Buscando a meta do usuário, se existir
-    meta = MetaGasto.objects.filter(usuario=request.user).first()
 
-    # Verificando se o total de gastos ultrapassou a meta
-    meta_ultrapassada = False
-    if meta and total_gastos >= meta.valor_meta:
-        meta_ultrapassada = True
+    # Obtenha os filtros por categoria
+    gastos_filtrados = {
+        'roupa': FiltroGasto.objects.filter(gasto__usuario=request.user, categoria='roupa'),
+        'eletronico': FiltroGasto.objects.filter(gasto__usuario=request.user, categoria='eletronico'),
+        'comida': FiltroGasto.objects.filter(gasto__usuario=request.user, categoria='comida'),
+    }
+
+    total_gastos = sum(gasto.valor for gasto in gastos)
+
+    meta = MetaGasto.objects.filter(usuario=request.user).first()
+    meta_ultrapassada = meta and total_gastos >= meta.valor_meta
 
     if request.method == 'POST':
         gasto_id = request.POST.get('gasto_id')
+        categoria = request.POST.get('categoria')
+        filtro_action = request.POST.get('filtro_action')
+        
         try:
             gasto = Gasto.objects.get(id=gasto_id, usuario=request.user)
-            gasto.delete()
-            messages.success(request, 'Gasto excluído com sucesso!')
-            return redirect('visualizar_gastos')  # Recarrega a página após exclusão para atualizar a soma
+
+            # Excluir gasto de filtros
+            if filtro_action == 'remover_filtro':
+                FiltroGasto.objects.filter(gasto=gasto, categoria=categoria).delete()
+                messages.success(request, 'Filtro removido com sucesso!')
+            # Adicionar gasto a um filtro específico
+            elif categoria in dict(FiltroGasto.CATEGORIAS):
+                with transaction.atomic():
+                    FiltroGasto.objects.get_or_create(gasto=gasto, categoria=categoria)
+                messages.success(request, 'Gasto filtrado com sucesso!')
+            
+            return redirect('visualizar_gastos')
+        
         except Gasto.DoesNotExist:
             messages.error(request, 'Gasto não encontrado!')
 
-    # Renderizando a página com as informações necessárias
     return render(request, 'visualizar_gastos.html', {
         'gastos': gastos,
+        'gastos_filtrados': gastos_filtrados,
         'total_gastos': total_gastos,
         'meta': meta,
-        'meta_ultrapassada': meta_ultrapassada
+        'meta_ultrapassada': meta_ultrapassada,
     })
 
 @login_required

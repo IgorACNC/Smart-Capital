@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
     'planejamento_aposentadoria',
     'imposto_renda',
-    'simulacao_investimentos'
+    'simulacao_investimentos',
+    'fluxo_caixa'
 ]
 
 Loguin_redir_url = 'home'

@@ -106,13 +106,51 @@
                 <form method="POST" style="display:inline;">
                     {% csrf_token %}
                     <input type="hidden" name="gasto_id" value="{{ gasto.id }}">
-                    <button type="submit" class="fa-solid fa-trash" onclick="return confirm('Você tem certeza que deseja excluir este gasto?');"></button>
+    
+                    <!-- Botão de filtro -->
+                    {% if gasto.filtrogasto_set.exists %}
+                        <!-- Se já filtrado, permite a remoção -->
+                        <select name="categoria">
+                            {% for filtro in gasto.filtrogasto_set.all %}
+                                <option value="{{ filtro.categoria }}" selected>{{ filtro.get_categoria_display }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" name="filtro_action" value="remover_filtro">Remover Filtro</button>
+                    {% else %}
+                        <!-- Se não filtrado, permite adicionar um novo -->
+                        <select name="categoria">
+                            <option value="" selected>Selecionar Filtro</option>
+                            <option value="roupa">Roupa</option>
+                            <option value="eletronico">Eletrônico</option>
+                            <option value="comida">Comida</option>
+                        </select>
+                        <button type="submit" name="filtro_action" value="adicionar_filtro">Filtrar</button>
+                    {% endif %}
+    
+                    <!-- Botão para excluir -->
+                    <a href="{% url 'excluir_gasto' gasto.id %}" onclick="return confirm('Você tem certeza que deseja excluir este gasto?');">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
                 </form>
             </li>
         {% empty %}
             <li>Não há gastos registrados.</li>
         {% endfor %}
     </ul>
+    
+    <!-- Seções de gastos filtrados -->
+    <h3>Gastos por Categoria</h3>
+    {% for categoria, gastos_filtrados in gastos_filtrados.items %}
+        <h4>{{ categoria|capfirst }}</h4>
+        <ul>
+            {% for filtro in gastos_filtrados %}
+                <li>{{ filtro.gasto.descricao }} - R$ {{ filtro.gasto.valor }} - {{ filtro.gasto.data }}</li>
+            {% empty %}
+                <li>Sem gastos nesta categoria.</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    
     <p>Total de Gastos: R$ {{ total_gastos }}</p>
 
     <!-- Seção de mensagens -->
