@@ -10,7 +10,8 @@ urlpatterns = [
     path('educacao-financeira/', include('educacao_financeira.urls')),
     path('planejamento/', include('planejamento_aposentadoria.urls')),
     path('imposto_renda/', include('imposto_renda.urls')),
-    path('simulacao/', include('simulacao_investimentos.urls'))
+    path('simulacao/', include('simulacao_investimentos.urls')),
+    path('fluxo-caixa/', include('fluxo_caixa.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

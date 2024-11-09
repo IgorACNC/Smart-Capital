@@ -118,13 +118,13 @@
                         <button type="submit" name="filtro_action" value="remover_filtro">Remover Filtro</button>
                     {% else %}
                         <!-- Se não filtrado, permite adicionar um novo -->
-                        <select name="categoria">
+                        <select name="categoria" class="select_filter">
                             <option value="" selected>Selecionar Filtro</option>
                             <option value="roupa">Roupa</option>
                             <option value="eletronico">Eletrônico</option>
                             <option value="comida">Comida</option>
                         </select>
-                        <button type="submit" name="filtro_action" value="adicionar_filtro">Filtrar</button>
+                        <button type="submit" name="filtro_action" value="adicionar_filtro" class="filter_button">Filtrar</button>
                     {% endif %}
     
                     <!-- Botão para excluir -->
