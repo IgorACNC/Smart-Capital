@@ -69,15 +69,16 @@
 
 ![image](https://github.com/user-attachments/assets/78499291-02e2-4fba-94e6-cb4827308d91)
 
-![image](https://github.com/user-attachments/assets/e3751554-32fb-4aac-855a-3062bf266fa5)
+![image](https://github.com/user-attachments/assets/71ac362a-dcb9-4959-a47c-5aacc0cc0344)
 
-- Link Screecast Figma: 
 
-- Link Screecast Deploy: 
+- Link Screecast Figma: https://www.youtube.com/watch?v=3CYczxIcow8
 
-- Link Screecast Testes:
+- Link Screecast Deploy: https://youtu.be/RaAdt5EH_FI
 
-- Link Screencast CI/CD:
+- Link Screecast Testes: https://youtu.be/6x3E6LiQWpk
+
+- Link Screencast CI/CD: https://youtu.be/NyDpz8nqdjc
   </details>
 
 
