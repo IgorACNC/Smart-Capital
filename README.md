@@ -61,6 +61,25 @@
 - Link Screecast Testes: https://youtu.be/u1QhNA6r7mA
   </details>
 
+# Entrega 4️⃣
+  <details>
+    <summary>Imagens</summary>
+
+![image](https://github.com/user-attachments/assets/7a094e22-5177-4bb3-aab6-7f606ebb5da2)
+
+![image](https://github.com/user-attachments/assets/78499291-02e2-4fba-94e6-cb4827308d91)
+
+![image](https://github.com/user-attachments/assets/e3751554-32fb-4aac-855a-3062bf266fa5)
+
+- Link Screecast Figma: 
+
+- Link Screecast Deploy: 
+
+- Link Screecast Testes:
+
+- Link Screencast CI/CD:
+  </details>
+
 
 
 
