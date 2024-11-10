@@ -17,6 +17,8 @@
 
    - Link Azure: https://smartcapital-fdd8hfepc3ekdxez.brazilsouth-01.azurewebsites.net/
 
+   - Link Slides: https://www.canva.com/design/DAGVokAn524/2lxYfygh-4U_XGyfck6nzQ/edit
+
 # Entrega 1️⃣
   <details>
     <summary>Imagens</summary>
