@@ -78,7 +78,7 @@
 
 - Link Screecast Deploy: https://youtu.be/RaAdt5EH_FI
 
-- Link Screecast Testes: https://youtu.be/6x3E6LiQWpk
+- Link Screecast Testes: https://www.youtube.com/watch?v=ZuzlOHlKDe0
 
 - Link Screencast CI/CD: https://youtu.be/NyDpz8nqdjc
   </details>
