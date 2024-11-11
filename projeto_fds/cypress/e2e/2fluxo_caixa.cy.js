@@ -2,6 +2,24 @@ describe('test suite 1', () => {
     
     it('cenario1', () => {
         cy.visit('/');
+        cy.get('[href="/cadastro/"]').click()
+        cy.get('#username').click()
+        cy.get('#username').type('igor')
+        cy.get('#email').click()
+        cy.get('#email').type('igor@cesar.school')
+        cy.get('#password1').click()
+        cy.get('#password1').type('123')
+        cy.get('#password2').click()
+        cy.get('#password2').type('123')
+        cy.get('#numero_telefone').click()
+        cy.get('#numero_telefone').type('81971081092')
+        cy.get('#estado').select(['Pernambuco'])
+        cy.get('button').click()
+        cy.get('#username').click()
+        cy.get('#username').type('igor')
+        cy.get('#password').type('123')
+        cy.get('button').click()
+        cy.visit('/');
         cy.get('[href="/login/"]').click()
         cy.get('#username').click()
         cy.get('#username').type('igor')
